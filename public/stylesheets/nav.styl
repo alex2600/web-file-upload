@@ -1,0 +1,28 @@
+#nav
+  color: $white
+  background-color: $bg-nav
+  position: fixed;
+  z-index 100
+  display: flex;
+  flex-direction row
+  align-items: center
+  justify-content: center
+  top: 0
+  left: 0
+  width: 100%
+  height auto
+  font-size: 1.5rem
+  border-bottom: 1px solid tint($bg-nav, 30%)
+  box-shadow 0 1px 10px $bg-nav
+
+  > a
+    padding: .3em .6em;
+    color inherit
+    text-decoration: none;
+    transition all .1s
+    &:hover
+      background-color: $white
+      color $baseColor
+      transition all .33s
+      transform translateY(-3px)
+

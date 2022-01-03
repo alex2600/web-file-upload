@@ -1,0 +1,70 @@
+.modal
+  position: fixed;
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, .4)
+  display none
+  flex-direction row
+  align-items: center
+  justify-content: center
+
+.modal.active
+  display: flex;
+  animation modal-in .33s ease-out
+  animation-fill-mode forwards
+
+.modal.deactive
+  display: flex;
+  animation modal-out .22s ease-in
+  animation-fill-mode forwards
+
+@keyframes modal-in
+  0%
+    opacity: 0;
+    transform translateY(-30px)
+  100%
+    opacity: 1;
+    transform translateY(0)
+    visibility visible
+
+@keyframes modal-out
+  0%
+    opacity: 1;
+  100%
+    opacity: 0;
+    transform translateY(-30px)
+    visibility hidden
+
+.modal-container
+  width: 40vw
+  border-radius 3%
+  box-shadow 0 0 30px #333
+  padding: 0
+  background: $baseColor;
+
+  > *
+    margin: 1em;
+
+
+.modal-header
+  position: relative;
+
+  h1, h2, h3, h4
+    margin-top: 0;
+
+.modal-x
+  position: absolute;
+  right: 0
+  top: 0;
+  color: #fff;
+  text-decoration: none;
+
+.modal-body
+  text-align: left;
+  margin: 1.5em 1em;
+
+.modal-footer
+  text-align: right;
+

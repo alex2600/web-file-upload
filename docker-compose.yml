@@ -1,0 +1,39 @@
+version: "2"
+
+networks:
+  file-upload.net:
+    driver: bridge
+
+
+services:
+  file-upload:
+#    image: node:12-slim
+    build: .
+    container_name: file-upload
+    depends_on:
+      - mongodb
+    restart: always
+    ports:
+      - "127.0.0.1:9100:3001"
+    volumes:
+      - "/mnt/voln154377a1/file-upload:/opt/file-upload/uploads"
+      - ".:/opt/file-upload"
+    environment:
+      - "NODE_ENV:production"
+    networks:
+      - file-upload.net
+    working_dir: /opt/file-upload
+    command: node bin/www
+
+  mongodb:
+    image: mongo:3.6
+    container_name: file-upload.mongodb
+    restart: always
+    environment:
+      #     - MONGO_DATA_DIR=/opt/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - /docker/file-upload/db:/data/db
+    networks:
+      - file-upload.net
+    command: mongod --smallfiles --logpath=/dev/null
