@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var formidable = require("express-formidable")
+var formidable = require("formidable")
 
 const settings = require("./settings")
 const cron = require("./lib/util/cron").init() // init
@@ -27,10 +27,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(formidable.parse({
-    uploadDir: settings.uploadDir,
-    multiples: true
-}))
+// app.use(formidable.parse({
+//     uploadDir: settings.uploadDir,
+//     multiples: true
+// }))
 
 /////// ROUTES ////////////////////////////////////////////////////////////////
 
