@@ -5,7 +5,7 @@
                 <upload-file :file="file" v-on:delete="deleteItem"></upload-file>
             </li>
         </ul>
-        <p class="shaded" v-if="!files.length"><em>keine laufenden Uploads</em></p>
+        <p class="shaded" v-if="!files.length"><em>no running uploads</em></p>
     </div>
 </template>
 
