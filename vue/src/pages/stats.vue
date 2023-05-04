@@ -32,7 +32,8 @@ onMounted(getCount)
 
 async function getCount () {
    count.value = await api.getCount()
-   size.value = await api.getFileSize()
+    let size2 = await api.getFileSize()
+    size.value = filesize(size2)
 }
 
 </script>

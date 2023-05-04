@@ -35,11 +35,15 @@ export function uploadFile (file, persist = false) {
 }
 
 export function getCount () {
-   return fetch(`${baseUrl}/api/file/count`).then(res => res.json())
+   return fetch(`${baseUrl}/api/file/count`, {
+      headers: getAuthHeader(),
+   }).then(res => res.json())
 }
 
 export function getFileSize () {
-   return fetch(`${baseUrl}/api/file/size`).then(res => res.json())
+   return fetch(`${baseUrl}/api/file/size`, {
+      headers: getAuthHeader(),
+   }).then(res => res.json())
 }
 
 export async function deleteFiles (idList) {
