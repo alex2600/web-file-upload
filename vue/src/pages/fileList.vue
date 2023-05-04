@@ -46,8 +46,8 @@
                         <td>{{ formatDate(file.date) }}</td>
                         <td>
                             <a class="btn icon-download" :href="file.url" title="download"></a>
-                            <a v-if="file.isMediaItem" class="btn icon-video" title="preview media item" :href="'/media/'+file._id"></a>
-                            <a class="btn icon-trash" @click="deleteFile(file)"></a>
+                            <router-link v-if="file.isMediaItem" class="btn icon-video" title="preview media item" :to="'/media/'+file._id"></router-link>
+                            <a class="btn icon-trash" @click.prevent="deleteFile(file)"></a>
                         </td>
                     </tr>
                 </tbody>
@@ -79,6 +79,7 @@ import filesize from 'filesize'
 import moment from 'moment'
 import tools from '../lib/tools'
 import * as api from "@/vue/src/lib/api"
+import {RouterLink} from "vue-router"
 
 moment.locale("de")
 
