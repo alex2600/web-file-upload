@@ -127,14 +127,13 @@ function sendMail (file) {
 function toggleCheckedForAll () {
    files.value.forEach(function (f) {
       f.checked = !f.checked
-      console.log(f.checked)
    })
 }
 
 /////// actions ////////////////////////////////////////////////////////////////
 
 function deleteSelection () {
-   modalIsActive.value = "active"
+   modalIsActive.value = true
 }
 
 function mailSelection () {
