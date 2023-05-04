@@ -72,6 +72,7 @@
 <script setup>
 
 import {onMounted, ref} from "vue"
+import {useRouter} from "vue-router"
 import Spinner from '../components/spinner.vue'
 import Modal from '../components/modal.vue'
 import filesize from 'filesize'
@@ -82,6 +83,8 @@ import * as api from "@/vue/src/lib/api"
 moment.locale("de")
 
 /////////////////////////////////////////////////////////////////////////
+
+const router = useRouter()
 
 const msg = ref("fileList.vue")
 const files = ref([])
@@ -102,7 +105,11 @@ function initFiles () {
                 })
                 files.value = files2.data
              })
-             .catch(console.error)
+             .catch(function (err) {
+                if (err.status === 401) {
+                   router.push("/login")
+                }
+             })
 }
 
 function formatDate (date) {

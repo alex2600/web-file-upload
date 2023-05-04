@@ -2,8 +2,12 @@ import _ from "lodash"
 
 const baseUrl = 'http://localhost:3002'
 
-export function getFiles () {
-   return fetch(`${baseUrl}/api/file/list`).then(res => res.json())
+export async function getFiles () {
+   const res = await fetch(`${baseUrl}/api/file/list`)
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
 }
 
 export function uploadFile (file, persist = false) {
