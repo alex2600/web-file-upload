@@ -56,3 +56,23 @@ export async function deleteFile (fileId) {
       throw ex
    }
 }
+
+export async function testAuth (user, pass) {
+   try {
+      const res = await fetch(`${baseUrl}/api/file/list`, {
+         method: "GET",
+         headers: {
+            // 'Content-Type': 'application/json'
+            "Authorization": "Basic " + btoa(`${user}:${pass}`),
+         },
+         // body: JSON.stringify({user, pass})
+      })
+      if (res.status === 401) {
+         throw {status: 401, message: "auth required"}
+      }
+      return await res.json()
+   } catch (ex) {
+      console.error(ex)
+      throw ex
+   }
+}

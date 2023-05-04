@@ -9,6 +9,7 @@ import FileList from "./pages/fileList.vue"
 import Media from "./pages/media.vue"
 import MediaItem from "./pages/mediaItem.vue"
 import Stats from "./pages/stats.vue"
+import Login from "./pages/login.vue"
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -21,6 +22,7 @@ const router = createRouter({
       {path: '/media', component: Media},
       {path: '/media/:id', component: MediaItem},
       {path: '/stats', component: Stats},
+      {path: '/login', component: Login},
    ]
 })
 
