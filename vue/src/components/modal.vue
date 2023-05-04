@@ -1,9 +1,9 @@
 <template>
     <div class="modal active" id="" v-if="isActive">
-        <a href="#close" class="modal-overlay" aria-label="Close" @click="cancel"></a>
+        <a href="#close" class="modal-overlay" aria-label="Close" @click.prevent="cancel"></a>
         <div class="modal-container">
             <div class="modal-header">
-                <a href="#close" class="modal-x icon-cancel" aria-label="Close" @click="cancel"></a>
+                <a href="#close" class="modal-x icon-cancel" aria-label="Close" @click.prevent="cancel"></a>
                 <h3>{{ headerTitle }}</h3>
             </div>
             <div class="modal-body">
