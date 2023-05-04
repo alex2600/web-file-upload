@@ -27,7 +27,7 @@
             }
         },
         created() {
-            this.$root.$on("error", this.error) // catch all errors on event bus
+            // this.$root.$on("error", this.error) // catch all errors on event bus
             if (this.doCleanup) {
                 this.cleanupInterval = setInterval(this.cleanup, 1000)
             }

@@ -76,6 +76,7 @@ import modal from '../components/modal.vue'
 import filesize from 'filesize'
 import moment from 'moment'
 import tools from '../lib/tools'
+import * as api from "@/vue/src/lib/api"
 
 moment.locale("de")
 
@@ -96,8 +97,9 @@ export default {
   methods: {
     initFiles: function () {
       const vm = this
-      let url = "/api/file/list";
-      return fetch(url)
+      // let url = "/api/file/list";
+      // return fetch(url)
+          return api.getFiles()
           .then(res => res.json())
           .then(function (files) {
             console.log(`got files from url="${url}"`, files)
