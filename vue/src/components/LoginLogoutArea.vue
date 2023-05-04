@@ -31,10 +31,11 @@ function init () {
 
 function doLogout () {
    auth.logout()
-   router.push("/login")
+   router.push("/")
 }
 
 function doLogin () {
+    router.push("/login")
 }
 
 </script>

@@ -21,8 +21,8 @@ import LoginLogoutArea from "../components/LoginLogoutArea.vue"
 
 #loginLogoutArea
    position: fixed;
-   right: 4px;
-   top: 4px
+   right: 6px;
+   top: 6px
    z-index: 201;
 
 </style>
