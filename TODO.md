@@ -8,4 +8,5 @@
 - complete file-list functions already present in UI
 - Clipboard Funktion
 - Pagination in /media und /files (oder besser infinite scroll?)    
-
+- remove moment.js - replace with dayjs
+- locale for dates is always "de" - make international

@@ -2,8 +2,8 @@ import _ from "lodash"
 
 const baseUrl = 'http://localhost:3002'
 
-export async function getFiles () {
-   const res = await fetch(`${baseUrl}/api/file/list`, {
+export async function getFiles (type = "data") {
+   const res = await fetch(`${baseUrl}/api/file/list?type=${type}`, {
       headers: getAuthHeader(),
    })
    if (res.status === 401) {
