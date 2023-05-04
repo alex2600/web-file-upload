@@ -25,10 +25,14 @@ import filesize from 'filesize'
 import * as api from "../lib/api"
 import {onMounted, ref} from "vue"
 
+/////////////////////////////////////////////////////////////////////////
+
 const count = ref({dbFileCount: 0, fsFileCount: 0})
 const size = ref(0)
 
 onMounted(getCount)
+
+/////////////////////////////////////////////////////////////////////////
 
 async function getCount () {
    count.value = await api.getCount()
