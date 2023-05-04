@@ -4,7 +4,6 @@ import _ from 'lodash'
 
 export default {
     getSizeText,
-    deleteFiles,
     getFileType,
     isMediaItem,
 }
@@ -36,20 +35,3 @@ function getSizeText(bytes) {
 }
 
 
-function deleteFiles(idList) {
-    console.log("deleteFiles", idList)
-    if (_.isArray(idList) && idList.length > 0) {
-        return Promise
-            .all(idList.map(function (_id) {
-                return fetch(`/api/file/${_id}`, {
-                    method: "DELETE",
-                })
-                    .then(res => res.json())
-                    .catch(function (err) {
-                        console.error(err)
-                    })
-            }))
-    } else {
-        return Promise.reject("idList not a valid argument: " + idList)
-    }
-}

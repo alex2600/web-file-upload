@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 const baseUrl = 'http://localhost:3002'
 
 export function getFiles () {
@@ -24,3 +26,29 @@ export function getFileSize () {
    return fetch(`${baseUrl}/api/file/size`).then(res => res.json())
 }
 
+export async function deleteFiles (idList) {
+   console.log("deleteFiles", idList)
+   try {
+      if (_.isArray(idList) && idList.length > 0) {
+         return await Promise.all(idList.map(deleteFile))
+      }
+      else {
+         throw new Error("idList not a valid argument: " + idList)
+      }
+   } catch (ex) {
+      console.error(ex)
+      throw ex
+   }
+}
+
+export async function deleteFile (fileId) {
+   try {
+      const res = await fetch(`${baseUrl}/api/file/${fileId}`, {
+         method: "DELETE",
+      })
+      return await res.json()
+   } catch (ex) {
+      console.error(ex)
+      throw ex
+   }
+}
