@@ -33,11 +33,11 @@ const router = useRouter()
 const count = ref({dbFileCount: 0, fsFileCount: 0})
 const size = ref(0)
 
-onMounted(getCount)
+onMounted(init)
 
 /////////////////////////////////////////////////////////////////////////
 
-async function getCount () {
+async function init () {
    try {
       count.value = await api.getCount()
       let size2 = await api.getFileSize()
