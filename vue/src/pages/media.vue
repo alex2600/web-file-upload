@@ -22,7 +22,7 @@
 
     import moment from 'moment'
     import tools from '../lib/tools'
-    import LazyMediaItem from '../components/lazyMediaItem'
+    import LazyMediaItem from '../components/lazyMediaItem.vue'
 
     moment.locale("de")
 

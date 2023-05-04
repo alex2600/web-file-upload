@@ -1,14 +1,14 @@
-import './public/stylesheets/style.styl'
+import '../../public/stylesheets/style.styl'
 
 import {createApp} from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
 
-import App from './vue/pages/app'
-import Upload from "./vue/pages/upload.vue"
-import FileList from "./vue/pages/fileList.vue"
-import Media from "./vue/pages/media.vue"
-import MediaItem from "./vue/pages/mediaItem.vue"
-import Stats from "./vue/pages/stats.vue"
+import App from './pages/app.vue'
+import Upload from "./pages/upload.vue"
+import FileList from "./pages/fileList.vue"
+import Media from "./pages/media.vue"
+import MediaItem from "./pages/mediaItem.vue"
+import Stats from "./pages/stats.vue"
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -29,5 +29,5 @@ const router = createRouter({
 
 const app = createApp(App)
 app.use(router)
-app.mount('#vue')
+app.mount('#app')
 

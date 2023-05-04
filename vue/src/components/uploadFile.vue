@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import Spinner from "./spinner";
+    import Spinner from "./spinner.vue";
 
     export default {
         name: "uploadFile",

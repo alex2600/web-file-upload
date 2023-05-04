@@ -11,9 +11,9 @@
 </template>
 
 <script>
-    import myNav from '../components/myNav'
+    import myNav from '../components/myNav.vue'
     import notifications from '../lib/notifications'
-    import errors from '../components/errors'
+    import errors from '../components/errors.vue'
 
     export default {
         name: "app",

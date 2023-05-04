@@ -71,8 +71,8 @@
 
 <script>
 
-import spinner from '../components/spinner'
-import modal from '../components/modal'
+import spinner from '../components/spinner.vue'
+import modal from '../components/modal.vue'
 import filesize from 'filesize'
 import moment from 'moment'
 import tools from '../lib/tools'

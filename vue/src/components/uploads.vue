@@ -11,7 +11,7 @@
 
 <script>
     import _ from 'lodash'
-    import uploadFile from './uploadFile'
+    import uploadFile from './uploadFile.vue'
 
     export default {
         name: "uploads",

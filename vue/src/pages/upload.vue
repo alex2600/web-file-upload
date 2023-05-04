@@ -37,11 +37,11 @@
 </template>
 
 <script>
-    import uploads from '../components/uploads'
-    import uploadDrop from '../components/uploadDrop'
-    import recentUploads from '../components/recentUploads'
+    import uploads from '../components/uploads.vue'
+    import uploadDrop from '../components/uploadDrop.vue'
+    import recentUploads from '../components/recentUploads.vue'
     import tools from '../lib/tools'
-    import Spinner from "../components/spinner";
+    import Spinner from "../components/spinner.vue";
 
     export default {
         name: "upload",
