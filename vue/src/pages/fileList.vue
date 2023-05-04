@@ -35,8 +35,11 @@
                 </thead>
                 <tbody>
                     <tr v-for="file in files">
-                        <td>
-                            <input type="checkbox" :checked="file.checked" @click="file.checked = !file.checked">
+                        <td style="padding: 0; position:relative;">
+                            <label class="clickable">
+                                <input type="checkbox" v-model="file.checked">
+                                <!--                                <input type="checkbox" :checked="file.checked" @click.prevent="file.checked = !file.checked">-->
+                            </label>
                         </td>
                         <td>
                             <a :class="{'icon-lock':file.persist}" :href="file.url">{{ file.originalName }}</a>
@@ -52,6 +55,8 @@
                 </tbody>
             </table>
         </div>
+
+        <pre class="text-left">{{ files }}</pre>
 
         <br>
 
@@ -197,5 +202,19 @@ function deleteFiles (f) {
 
 #file-list
    margin: 4em 0
+
+label.clickable
+   display flex
+   align-items center
+   justify-content: center
+   position: absolute
+   left: 0
+   top: 0
+   right: 0
+   bottom 0
+   margin: 0
+
+   &:hover
+      background-color: mix(orange, white, 50%)
 
 </style>
