@@ -9,11 +9,20 @@
             |
             <router-link to="/stats">Stats</router-link>
         </nav>
+        <LoginLogoutArea id="loginLogoutArea"></LoginLogoutArea>
     </div>
 </template>
 
 <script setup>
-
-
+import LoginLogoutArea from "../components/LoginLogoutArea.vue"
 </script>
 
+<style lang="stylus" scoped>
+
+#loginLogoutArea
+   position: fixed;
+   right: 4px;
+   top: 4px
+   z-index: 201;
+
+</style>

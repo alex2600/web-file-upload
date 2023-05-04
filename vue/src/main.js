@@ -2,6 +2,7 @@ import '../../public/stylesheets/style.styl'
 
 import {createApp} from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
+import {createPinia} from "pinia"
 
 import App from './pages/app.vue'
 import Upload from "./pages/upload.vue"
@@ -26,10 +27,13 @@ const router = createRouter({
    ]
 })
 
+const pinia = createPinia()
+
 /////////////////////////////////////////////////////////////////////////
 
 
 const app = createApp(App)
 app.use(router)
+app.use(pinia)
 app.mount('#app')
 
