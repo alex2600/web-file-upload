@@ -56,8 +56,6 @@
             </table>
         </div>
 
-        <pre class="text-left">{{ files }}</pre>
-
         <br>
 
         <modal header-title="Delete Files"
