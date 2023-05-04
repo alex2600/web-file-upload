@@ -1,0 +1,29 @@
+<div id="list" class="content">
+    <h1>File List <small>({{size}} in {{noFiles}} files)</small></h1>
+
+    {{#if hasFiles}}
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+<!--                <th>URL</th>-->
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each files}}
+                <tr>
+                    <td><a href="{{url}}" target="_blank">{{originalName}}</a></td>
+                    <td style="text-align:right;">{{fileSize}}</td>
+                    <td>{{date}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <p>no Files found</p>
+    {{/if}}
+
+</div>
+<br>

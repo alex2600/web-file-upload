@@ -1,0 +1,35 @@
+//$baseColor = #E69500
+//$baseColorText = #ffffff
+//$shadedText = tint($baseColor, 70%)
+//$shadedText2 = tint($baseColor, 90%)
+//$tableAlt = shade($baseColor, 5%)
+
+#upload-drop-target
+  border: 3px dashed $shadedText
+  br()
+  /*min-width: 40vw;*/
+  /*max-width: 90vw*/
+  height: 200px
+  display: flex
+  flex-direction column
+  align-items: center
+  justify-content: center
+
+  &:hover, &.drag-over
+    background: tint($baseColor, 10%);
+
+
+#upload-drop-icon
+  color $shadedText
+  font-size: 96px;
+
+#upload-drop-text
+  font-size: 18px
+  color $shadedText
+
+#upload > *
+  transition color .2s ease-in-out
+
+#upload:hover > *
+  color: $baseColorText;
+  transition color .2s ease-in-out

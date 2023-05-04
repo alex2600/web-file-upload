@@ -1,0 +1,22 @@
+{
+  "title": "Web File Uploader",
+  "port": 9100,
+  "baseUrl": "https://your-site.com",
+  "uploadDir": "/tmp",
+  "logFile": "./logs/log.log",
+  "db": {
+    "url": "mongodb://localhost/alexFileUploader",
+    "dbCleanupInterval": "0 */30 * * * *",
+    "fileMaxAge": "PT48H"
+  },
+  "mail": {
+    "mailSendInterval": "0 */30 * * * *",
+    "from": "your.mail@example.com",
+    "to": "your.mail@example.com",
+    "subject": "New Upload @ {{site}}"
+  },
+  "auth": {
+    "user": "user",
+    "pass": "password342565523"
+  }
+}
