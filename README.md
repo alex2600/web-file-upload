@@ -13,6 +13,7 @@
   - Media files can be previewed without having to download the file
 - by default all uploaded files are deleted after 48 hours
 - files can be pinned - pinned files are not deleted automatically after a period of time
+- a list of recently uploaded files are reported to a specified email adress
 
 
 ## Setup
