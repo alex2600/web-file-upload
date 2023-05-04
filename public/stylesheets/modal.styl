@@ -7,7 +7,7 @@
   background-color: rgba(0, 0, 0, .4)
   display none
   flex-direction row
-  align-items: center
+  align-items: start
   justify-content: center
 
 .modal.active
@@ -38,9 +38,10 @@
     visibility hidden
 
 .modal-container
+  margin-top: 300px
   width: 40vw
   border-radius 3%
-  box-shadow 0 0 30px #333
+  box-shadow 0 0 40px 0px darken($baseColor, 60%)
   padding: 0
   background: $baseColor;
 
@@ -64,6 +65,7 @@
 .modal-body
   text-align: left;
   margin: 1.5em 1em;
+  margin: 2em
 
 .modal-footer
   text-align: right;
