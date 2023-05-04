@@ -96,7 +96,6 @@ onMounted(initFiles)
 
 function initFiles () {
    return api.getFiles()
-             .then(res => res.json())
              .then(function (files2) {
                 console.log(`got files`, files2)
                 files2.data.forEach(function (f) {
@@ -106,6 +105,7 @@ function initFiles () {
                 files.value = files2.data
              })
              .catch(function (err) {
+                console.error(err)
                 if (err.status === 401) {
                    router.push("/login")
                 }
