@@ -15,6 +15,9 @@
         <div id="upload-container">
 
             <upload-drop v-on:drop="dropFile"></upload-drop>
+            <div style="margin-top: -.5em;">
+                <input type="file" class="" @change="dropFile" multiple>
+            </div>
 
             <div id="upload-q" class="field">
                 <fieldset>
@@ -52,6 +55,7 @@ const data = reactive({
    error: null,
    isUploading: false,
    persist: false,
+   // fileSelected: null,
 })
 
 onMounted(init)
@@ -63,9 +67,17 @@ function init () {
    setInterval(doUpload, 500)
 }
 
-function dropFile (newFiles) {
-   let files = Array.from(newFiles)
-   console.log("DROP", files)
+function dropFile (newFilesOrEvent) {
+   console.log("DROP", newFilesOrEvent)
+   let files
+   if (newFilesOrEvent instanceof Event) {
+      files = newFilesOrEvent.target.files
+      newFilesOrEvent.target.files = null
+   }
+   else {
+      files = newFilesOrEvent
+   }
+   files = Array.from(files)
    files = files.map(function (file) { // wrap files in object
       return {
          file: file,
