@@ -48,7 +48,8 @@
                         <td>{{ formatDate(file.date) }}</td>
                         <td>
                             <a class="btn icon-download" :href="file.url" title="download"></a>
-                            <router-link v-if="file.isMediaItem" class="btn icon-video" title="preview media item" :to="'/media/'+file._id"></router-link>
+                            <router-link v-if="file.isMediaItem" class="btn icon-link preview-link"
+                                         title="preview" :to="'/media/'+file._id"></router-link>
                             <a class="btn icon-trash" @click.prevent="deleteFile(file)"></a>
                         </td>
                     </tr>
