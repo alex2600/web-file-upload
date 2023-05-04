@@ -5,7 +5,7 @@
   "uploadDir": "/tmp",
   "logFile": "./logs/log.log",
   "db": {
-    "url": "mongodb://localhost/alexFileUploader",
+    "url": "mongodb://127.0.0.1/fileUpload",
     "dbCleanupInterval": "0 */30 * * * *",
     "fileMaxAge": "PT48H"
   },
