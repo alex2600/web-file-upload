@@ -5,44 +5,36 @@
             <errors :do-cleanup="false"></errors>
             <router-view></router-view>
             <footer></footer>
-            <div id="version">{{version}}</div>
+            <div id="version">v{{ version }}</div>
         </div>
     </div>
 </template>
 
-<script>
-    import myNav from '../components/myNav.vue'
-    import notifications from '../lib/notifications'
-    import errors from '../components/errors.vue'
+<script setup>
+import myNav from '../components/myNav.vue'
+import notifications from '../lib/notifications'
+import errors from '../components/errors.vue'
 
-    import "../assets/font/css/file-upload.css"
+import "../assets/font/css/file-upload.css"
+import {onMounted, ref} from "vue"
+import * as api from '../lib/api'
 
-    export default {
-        name: "app",
-        components: {myNav, errors},
-        data() {
-            return {
-                version: "v1.0"
-            }
-        },
-        mounted() {
-            // notifications.requestNotification()
-            this.loadVersion()
-        },
-        methods: {
-            showNotification: function (msg) {
-                return notifications.displayNotification(msg)
-            },
-            loadVersion: function () {
-                const vm = this
-                return fetch("/api/version")
-                    .then(res => res.json())
-                    .then(function (data) {
-                        vm.version = `v${data.data}`
-                    })
-            }
-        },
-    }
+/////////////////////////////////////////////////////////////////////////
+
+const version = ref("N.A.")
+
+onMounted(loadVersion)
+
+/////////////////////////////////////////////////////////////////////////
+
+// function showNotification (msg) {
+//    return notifications.displayNotification(msg) // TODO include notifications
+// }
+
+async function loadVersion () {
+   version.value = await api.getVersion()
+}
+
 </script>
 
 <style scoped>

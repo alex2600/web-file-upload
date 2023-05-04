@@ -2,6 +2,8 @@ import _ from "lodash"
 
 const baseUrl = 'http://localhost:3002'
 
+/////// FILES ////////////////////////////////////////////////////////////////
+
 export async function getFiles (type = "data") {
    const res = await fetch(`${baseUrl}/api/file/list?type=${type}`, {
       headers: getAuthHeader(),
@@ -34,26 +36,6 @@ export function uploadFile (file, persist = false) {
    }).then(res => res.json())
 }
 
-export async function getCount () {
-   const res = await fetch(`${baseUrl}/api/file/count`, {
-      headers: getAuthHeader(),
-   })
-   if (res.status === 401) {
-      throw {status: 401, message: "auth required"}
-   }
-   return res.json()
-}
-
-export async function getFileSize () {
-   const res = await fetch(`${baseUrl}/api/file/size`, {
-      headers: getAuthHeader(),
-   })
-   if (res.status === 401) {
-      throw {status: 401, message: "auth required"}
-   }
-   return res.json()
-}
-
 export async function deleteFiles (idList) {
    console.log("deleteFiles", idList)
    try {
@@ -82,6 +64,30 @@ export async function deleteFile (fileId) {
    }
 }
 
+/////// STATS ////////////////////////////////////////////////////////////////
+
+export async function getCount () {
+   const res = await fetch(`${baseUrl}/api/file/count`, {
+      headers: getAuthHeader(),
+   })
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
+}
+
+export async function getFileSize () {
+   const res = await fetch(`${baseUrl}/api/file/size`, {
+      headers: getAuthHeader(),
+   })
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
+}
+
+/////// AUTH ////////////////////////////////////////////////////////////////
+
 export async function testAuth (login, password) {
    try {
       const res = await fetch(`${baseUrl}/api/file/list`, {
@@ -107,4 +113,11 @@ function getAuthHeader (login, password) {
    else {
       return {}
    }
+}
+
+/////// VERSION ////////////////////////////////////////////////////////////////
+
+export async function getVersion () {
+   const {data} = await fetch(`${baseUrl}/api/version`).then(res => res.json())
+   return data
 }
