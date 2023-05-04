@@ -24,8 +24,11 @@
 import filesize from 'filesize'
 import * as api from "../lib/api"
 import {onMounted, ref} from "vue"
+import {useRouter} from "vue-router"
 
 /////////////////////////////////////////////////////////////////////////
+
+const router = useRouter()
 
 const count = ref({dbFileCount: 0, fsFileCount: 0})
 const size = ref(0)
@@ -35,9 +38,16 @@ onMounted(getCount)
 /////////////////////////////////////////////////////////////////////////
 
 async function getCount () {
-   count.value = await api.getCount()
-    let size2 = await api.getFileSize()
-    size.value = filesize(size2)
+   try {
+      count.value = await api.getCount()
+      let size2 = await api.getFileSize()
+      size.value = filesize(size2)
+   } catch (ex) {
+      console.error(ex)
+      if (ex.status === 401) {
+         return router.push("/login")
+      }
+   }
 }
 
 </script>

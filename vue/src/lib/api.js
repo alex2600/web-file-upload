@@ -34,16 +34,24 @@ export function uploadFile (file, persist = false) {
    }).then(res => res.json())
 }
 
-export function getCount () {
-   return fetch(`${baseUrl}/api/file/count`, {
+export async function getCount () {
+   const res = await fetch(`${baseUrl}/api/file/count`, {
       headers: getAuthHeader(),
-   }).then(res => res.json())
+   })
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
 }
 
-export function getFileSize () {
-   return fetch(`${baseUrl}/api/file/size`, {
+export async function getFileSize () {
+   const res = await fetch(`${baseUrl}/api/file/size`, {
       headers: getAuthHeader(),
-   }).then(res => res.json())
+   })
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
 }
 
 export async function deleteFiles (idList) {
