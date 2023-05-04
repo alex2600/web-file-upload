@@ -15,6 +15,8 @@
     import notifications from '../lib/notifications'
     import errors from '../components/errors.vue'
 
+    import "../assets/font/css/file-upload.css"
+
     export default {
         name: "app",
         components: {myNav, errors},
