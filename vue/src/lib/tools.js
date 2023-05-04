@@ -4,7 +4,6 @@ import _ from 'lodash'
 
 export default {
     getSizeText,
-    uploadFile,
     deleteFiles,
     getFileType,
     isMediaItem,
@@ -36,17 +35,6 @@ function getSizeText(bytes) {
     return b + u.name
 }
 
-function uploadFile(file, persist = false) {
-    const upfile = new FormData()
-    upfile.append("file", file)
-
-    let url = "/api/upload";
-    if(persist) url = `${url}?persist=1`
-    return fetch(url, {
-        method: "POST",
-        body: upfile,
-    }).then(res => res.json())
-}
 
 function deleteFiles(idList) {
     console.log("deleteFiles", idList)
