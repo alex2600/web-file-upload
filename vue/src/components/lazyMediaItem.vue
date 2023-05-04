@@ -10,6 +10,9 @@
                 {{ file.date2 }}
                 <br>
                 <a :href="file.url" class="ff-mono a-white icon-download">{{ file.originalName }}</a>
+                &nbsp;
+                <router-link class="btn icon-link preview-link"
+                             title="preview" :to="'/media/'+file._id"></router-link>
             </figcaption>
             <video v-if="file.type==='video'" :src="file.url" controls></video>
             <img v-if="file.type==='image'" :src="file.url">
@@ -19,6 +22,7 @@
 
 <script setup>
 import {onMounted, ref} from "vue"
+import {useRouter, RouterLink} from "vue-router"
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -27,6 +31,7 @@ const props = defineProps({
    isLarge: Boolean,
 })
 
+const router = useRouter()
 const isVisible = ref(false)
 const root = ref(null) // init from root element
 
@@ -78,5 +83,12 @@ figcaption
 
 video:focus
    outline: 8px solid rgba(255, 255, 255, .5)
+
+.preview-link
+   color: tint(#004860, 70%)
+   text-decoration: none;
+
+   &:hover
+      color: white;
 
 </style>
