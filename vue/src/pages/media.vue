@@ -25,10 +25,13 @@ import moment from 'moment'
 import * as api from "../lib/api"
 import tools from '../lib/tools'
 import LazyMediaItem from '../components/lazyMediaItem.vue'
+import {useRouter} from "vue-router"
 
 moment.locale("de")
 
 /////////////////////////////////////////////////////////////////////////
+
+const router = useRouter()
 
 const msg = ref('media.vue')
 const files = ref([])
@@ -38,12 +41,20 @@ onMounted(initFiles)
 /////////////////////////////////////////////////////////////////////////
 
 async function initFiles () {
-   const files2 = await api.getFiles("media")
-   files2.data.forEach(function (f) {
-      f.type = tools.getFileType(f)
-      f.date2 = moment(f.date).format("L LTS")
-   })
-   files.value = files2.data
+   try {
+
+      const files2 = await api.getFiles("media")
+      files2.data.forEach(function (f) {
+         f.type = tools.getFileType(f)
+         f.date2 = moment(f.date).format("L LTS")
+      })
+      files.value = files2.data
+   } catch (ex) {
+      console.error(ex)
+      if (ex.status === 401) {
+         return router.push("/login")
+      }
+   }
 }
 
 /////////////////////////////////////////////////////////////////////////
