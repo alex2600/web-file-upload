@@ -55,7 +55,6 @@ const data = reactive({
    error: null,
    isUploading: false,
    persist: false,
-   // fileSelected: null,
 })
 
 onMounted(init)

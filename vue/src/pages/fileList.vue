@@ -40,7 +40,6 @@
                         </td>
                         <td>
                             <a :class="{'icon-lock':file.persist}" :href="file.url">{{ file.originalName }}</a>
-                            <!--                        <pre>{{file}}</pre>-->
                         </td>
                         <td>{{ formatSize(file.fileSize) }}</td>
                         <td>{{ formatDate(file.date) }}</td>

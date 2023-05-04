@@ -6,7 +6,6 @@
         <div v-else>
             <button @click="doLogin">Login</button>
         </div>
-<!--        <pre>{{ auth }}</pre>-->
     </div>
 </template>
 

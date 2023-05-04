@@ -51,12 +51,12 @@ async function tryLogin () {
 
 </script>
 
+
 <style scoped lang="stylus">
 
 form
    display grid
    grid-template-columns 1fr 2fr
-   //grid-template-rows 1fr 1fr
    gap 1em
    border 1px solid white
    padding 1em
