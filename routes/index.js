@@ -8,7 +8,7 @@ const db = require("../data/db/db")
 const log = require("../logger")
 
 /////////////////////////////////////////////////////////////////////////
-
+// TODO remove this
 router
     .get('/', function (req, res, next) {
         var data = {

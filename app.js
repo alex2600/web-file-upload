@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var formidable = require("formidable")
 
 const settings = require("./settings")
+const cors = require("cors")
 const cron = require("./lib/util/cron").init() // init
 
 /////////////////////////////////////////////////////////////////////////
@@ -21,6 +22,7 @@ app.set('json spaces', 3)
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cors())
 app.use(bodyParser.json());
 // app.use(bodyParser.json({limit: "12GB"})); // not working - still "request entity too large"
 app.use(bodyParser.urlencoded({extended: false}));
