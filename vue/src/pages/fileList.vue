@@ -38,7 +38,6 @@
                         <td style="padding: 0; position:relative;">
                             <label class="clickable">
                                 <input type="checkbox" v-model="file.checked">
-                                <!--                                <input type="checkbox" :checked="file.checked" @click.prevent="file.checked = !file.checked">-->
                             </label>
                         </td>
                         <td>
@@ -50,6 +49,7 @@
                             <a class="btn icon-download" :href="file.url" title="download"></a>
                             <router-link v-if="file.isMediaItem" class="btn icon-link preview-link"
                                          title="preview" :to="'/media/'+file._id"></router-link>
+                            <span v-else class="icon-link preview-link" title="preview" style="opacity: .2;"></span>
                             <a class="btn icon-trash" @click.prevent="deleteFile(file)"></a>
                         </td>
                     </tr>
