@@ -9,7 +9,7 @@
         </div>
         <div class="options">
             <input type="checkbox" v-model="data.persist" id="input-persist">
-            <label for="input-persist">do not delete this file automatically</label>
+            <label for="input-persist">do not delete automatically</label>
         </div>
 
         <div id="upload-container">
