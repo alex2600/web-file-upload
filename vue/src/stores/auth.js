@@ -5,7 +5,7 @@ export const useAuthState = defineStore('auth', () => {
    const login = ref('')
    const password = ref('') // TODO use JWT - plaintext passwords are not secure
 
-   function init () {
+   function init () { // TODO where to call this best?
       login.value = sessionStorage.getItem("login")
       password.value = sessionStorage.getItem("password")
    }

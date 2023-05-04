@@ -8,7 +8,7 @@
                     ({{upload.fileSize}})</a>
             </li>
         </ul>
-        <p class="shaded" v-if="!uploaded.length"><em>keine Uploads in letzter Zeit</em></p>
+        <p class="shaded" v-if="!uploaded.length"><em>no recent uploads</em></p>
     </div>
 </template>
 
@@ -27,7 +27,7 @@
             }
         },
         created: function () {
-            // letzte uploads aus localstorage laden
+            // TODO letzte uploads aus localstorage laden
         },
         methods: {
             getDate: function (date) {
