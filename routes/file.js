@@ -15,13 +15,18 @@ const fileTools = require("../lib/util/fileTools")
 router
    .get("/list", auth)
    .get("/list", listFiles)
+
    .get("/mime", auth)
    .get("/mime", listMimeTypes)
+
    .get("/count", auth)
    .get("/count", countFiles)
+
    .get("/size", auth)
    .get("/size", folderSize)
+
    .get('/:_id', getFile)
+
    .delete("/:_id", auth)
    .delete("/:_id", async function (req, res, next) {
       const _id = req.params._id
