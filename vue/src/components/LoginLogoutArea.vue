@@ -1,21 +1,24 @@
 <template>
     <div id="loginLogoutArea">
-        <div v-if="login">
+        <div v-if="auth.login">
             <button @click="doLogout">Logout</button>
         </div>
         <div v-else>
             <button @click="doLogin">Login</button>
         </div>
+<!--        <pre>{{ auth }}</pre>-->
     </div>
 </template>
 
 <script setup>
 import {computed, onMounted, ref} from "vue"
 import {useRouter} from "vue-router"
+import {useAuthState} from "@/vue/src/stores/auth"
 
 /////////////////////////////////////////////////////////////////////////
 
 const router = useRouter()
+const auth = useAuthState()
 const login = ref(null)
 
 onMounted(init)
@@ -23,20 +26,15 @@ onMounted(init)
 /////////////////////////////////////////////////////////////////////////
 
 function init () {
-   if (!sessionStorage) {
-      return false
-   }
-   login.value = sessionStorage.getItem("login")
+   auth.init()
 }
 
 function doLogout () {
-   sessionStorage.removeItem("login")
-   sessionStorage.removeItem("password")
-   login.value = null
+   auth.logout()
+   router.push("/login")
 }
 
 function doLogin () {
-   router.push("/login")
 }
 
 </script>

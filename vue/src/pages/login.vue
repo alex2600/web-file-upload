@@ -18,10 +18,12 @@
 import {ref} from "vue"
 import * as api from "../lib/api"
 import {useRouter} from "vue-router"
+import {useAuthState} from "@/vue/src/stores/auth"
 
 /////////////////////////////////////////////////////////////////////////
 
 const router = useRouter()
+const auth = useAuthState()
 
 const login = ref("")
 const password = ref("")
@@ -34,8 +36,7 @@ async function tryLogin () {
    try {
       const res = await api.testAuth(login.value, password.value)
       // auth ok - remember login and password
-      sessionStorage.setItem("login", login.value)
-      sessionStorage.setItem("password", password.value) // TODO use JWT - plaintext passwords are not secure
+      auth.update(login.value, password.value)
       return router.push("/file-list")
    } catch (ex) {
       console.log("login failed", ex)
