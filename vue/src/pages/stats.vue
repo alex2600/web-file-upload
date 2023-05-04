@@ -4,68 +4,36 @@
         <table class="table">
             <tr>
                 <td>Total size</td>
-                <td>{{size}}</td>
+                <td>{{ size }}</td>
             </tr>
             <tr>
                 <td>DB file count</td>
-                <td>{{count.dbFileCount}}</td>
+                <td>{{ count?.dbFileCount ?? count }}</td>
             </tr>
             <tr>
                 <td>FS file count</td>
-                <td>{{count.fsFileCount}}</td>
+                <td>{{ count?.fsFileCount ?? count }}</td>
             </tr>
         </table>
 
     </div>
 </template>
 
-<script>
-    import filesize from 'filesize'
+<script setup>
 
-    export default {
-        name: "stats",
-        data() {
-            return {
-                count: 0,
-                size: 0,
-            }
-        },
-        created() {
-            this.getCount()
-        },
-        methods: {
-            getCount: function () {
-                const vm = this
-                return fetch("/api/file/count")
-                    .then(it => it.json())
-                    .then(function (count) {
-                        if (count.status === "error") {
-                            console.error(count)
-                            vm.$root.$emit("error", count)
-                        } else {
-                            vm.count = count
-                        }
-                        return fetch("/api/file/size")
-                    })
-                    .then(it => it.json())
-                    .then(function (size) {
-                        if (size.status === "error") {
-                            console.error(size)
-                            vm.$root.$emit("error", size)
-                        } else {
-                            vm.size = filesize(size)
-                        }
-                    })
-                    .catch(function (err) {
-                        console.trace(err)
-                        vm.$root.$emit("error", err)
-                    })
-            }
-        },
+import filesize from 'filesize'
+import * as api from "../lib/api"
+import {onMounted, ref} from "vue"
 
-    }
+const count = ref({dbFileCount: 0, fsFileCount: 0})
+const size = ref(0)
+
+onMounted(getCount)
+
+async function getCount () {
+   count.value = await api.getCount()
+   size.value = await api.getFileSize()
+}
+
 </script>
 
-<style scoped >
-
-</style>

@@ -15,3 +15,12 @@ export function uploadFile (file, persist = false) {
       body: upfile,
    }).then(res => res.json())
 }
+
+export function getCount () {
+   return fetch(`${baseUrl}/api/file/count`).then(res => res.json())
+}
+
+export function getFileSize () {
+   return fetch(`${baseUrl}/api/file/size`).then(res => res.json())
+}
+
