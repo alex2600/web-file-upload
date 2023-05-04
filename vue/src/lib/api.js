@@ -12,6 +12,16 @@ export async function getFiles () {
    return res.json()
 }
 
+export async function getFile (id) {
+   const res = await fetch(`${baseUrl}/api/file/${id}?type=data`, {
+      headers: getAuthHeader(),
+   })
+   if (res.status === 401) {
+      throw {status: 401, message: "auth required"}
+   }
+   return res.json()
+}
+
 export function uploadFile (file, persist = false) {
    const upfile = new FormData()
    upfile.append("file", file)

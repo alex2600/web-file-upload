@@ -8,46 +8,43 @@
     </div>
 </template>
 
-<script>
+<script setup>
 
-    import moment from 'moment'
-    import tools from '../lib/tools'
-    import LazyMediaItem from '../components/lazyMediaItem.vue'
+import {onMounted, ref} from "vue"
+import moment from 'moment' // TODO drop moment use dayjs
+import tools from '../lib/tools'
+import LazyMediaItem from '../components/lazyMediaItem.vue'
+import * as api from '../lib/api'
+import {useRoute} from "vue-router"
 
-    moment.locale("de")
+moment.locale("de")
 
-    export default {
-        name: "mediaItem",
-        components: {LazyMediaItem, moment},
-        data() {
-            return {
-                msg: 'mediaItem.vue',
-                file: null,
-            }
-        },
-        created: function () {
-            const vm = this
-            let id = this.$route.params.id;
-            const url = `/api/file/${id}?type=data`
-            return fetch(url)
-                .then(res => res.json())
-                .then(function (ff) {
-                    ff.type = tools.getFileType(ff)
-                    vm.file = ff
-                })
-                .catch(console.error)
-        },
-        methods: {}
-    }
+/////////////////////////////////////////////////////////////////////////
+
+const route = useRoute()
+
+const msg = ref("mediaItem.vue")
+const file = ref(null)
+
+onMounted(init)
+
+/////////////////////////////////////////////////////////////////////////
+
+async function init () {
+   let id = route.params.id
+   const file2 = await api.getFile(id)
+   file2.type = tools.getFileType(file2)
+   file.value = file2
+}
 </script>
 
 <style scoped lang="stylus">
 
-    #file-list
-        margin: 4em 0
+#file-list
+   margin: 4em 0
 
-    .media-items
-        justify-content: space-around;
+.media-items
+   justify-content: space-around;
 
 
 </style>
