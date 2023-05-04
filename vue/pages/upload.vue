@@ -1,15 +1,14 @@
 <template>
     <div class="container">
         <h1>
-            <span class="ff-mono">gorillaeis.com</span> &#x21CC; <span class="ff-mono">upload</span>
-<!--            <span class="ff-serif">ALEX</span> &#x21CC; <span class="ff-mono">upload</span>-->
+            <span class="ff-mono">WEB-File</span> &#x21CC; <span class="ff-mono">upload</span>
         </h1>
         <div class="subheader ff-default">
-          Dateien werden nach 48 Stunden automatisch wieder gelöscht.
+          Files are deleted automatically after 48 hours.
         </div>
         <div class="options">
           <input type="checkbox" v-model="persist" id="input-persist">
-          <label for="input-persist">nicht automatisch löschen</label>
+          <label for="input-persist">do not delete this file automatically</label>
         </div>
 
         <div id="upload-container">
@@ -18,7 +17,7 @@
 
             <div id="upload-q" class="field">
                 <fieldset>
-                    <legend>Upload-Warteschlange</legend>
+                    <legend>Upload-Queue</legend>
                     <uploads :files="uploadQ"></uploads>
                 </fieldset>
             </div>
@@ -27,7 +26,7 @@
 
             <div id="recent-uploads" class="field">
                 <fieldset>
-                    <legend>Letzte Uploads</legend>
+                    <legend>Recent Uploads</legend>
                     <recent-uploads :uploaded="uploaded"></recent-uploads>
                 </fieldset>
             </div>
@@ -49,7 +48,6 @@
         components: {Spinner, uploads, uploadDrop, recentUploads},
         data() {
             return {
-                msg: 'ja its workin!',
                 uploadQ: [],
                 uploaded: [],
                 error: null,
@@ -72,7 +70,6 @@
                     }
                 })
                 this.uploadQ = [...this.uploadQ, ...files]
-                // console.log("DROP new Q is ", JSON.stringify(this.uploadQ, null, "   "))
             },
             doUpload: function () {
                 const vm = this

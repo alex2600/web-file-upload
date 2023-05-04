@@ -2,7 +2,6 @@
     <div id="upload-main">
         <div>
             <my-nav></my-nav>
-<!--                        <br><br><a @click="showNotification('Was geht ab')">Show</a>-->
             <errors :do-cleanup="false"></errors>
             <router-view></router-view>
             <footer></footer>
@@ -21,7 +20,7 @@
         components: {myNav, errors},
         data() {
             return {
-                version: "xxx"
+                version: "v1.0"
             }
         },
         mounted() {

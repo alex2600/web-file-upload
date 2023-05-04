@@ -1,5 +1,4 @@
 import VueRouter from 'vue-router'
-import App from '../pages/app'
 import Upload from '../pages/upload'
 import FileList from '../pages/fileList'
 import Media from '../pages/media'
