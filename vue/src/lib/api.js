@@ -65,6 +65,7 @@ export async function deleteFile (fileId) {
    try {
       const res = await fetch(`${baseUrl}/api/file/${fileId}`, {
          method: "DELETE",
+         headers: getAuthHeader(),
       })
       return await res.json()
    } catch (ex) {
