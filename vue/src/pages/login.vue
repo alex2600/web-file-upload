@@ -7,6 +7,7 @@
             <input type="text" v-model="login" :disabled="disabled">
             <span>Password</span>
             <input type="password" v-model="password" :disabled="disabled">
+            <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
             <button type="submit" class="button">Login</button>
         </form>
     </div>
@@ -28,6 +29,7 @@ const auth = useAuthState()
 const login = ref("")
 const password = ref("")
 const disabled = ref(false)
+const errorMessage = ref(null)
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -37,9 +39,11 @@ async function tryLogin () {
       const res = await api.testAuth(login.value, password.value)
       // auth ok - remember login and password
       auth.update(login.value, password.value)
+      errorMessage.value = null
       return router.push("/file-list")
    } catch (ex) {
       console.log("login failed", ex)
+      errorMessage.value = ex.message
    } finally {
       disabled.value = false
    }
@@ -66,5 +70,11 @@ form
 
    button
       grid-column-end 3
+
+.error
+   background-color: #880b0b;
+   color: white;
+   padding: .25em .5em;
+   grid-column 1 / span 2
 
 </style>
