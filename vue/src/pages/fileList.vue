@@ -14,12 +14,12 @@
             <div id="file-commands">
                 <button title="delete selected files" class="icon-trash" :disabled="filesSelected() <= 0"
                         @click="deleteSelection"></button>
-                <button title="mail selected files" class="icon-mail" :disabled="filesSelected() <= 0"
-                        @click="mailSelection"></button>
-                <button title="copy selected files to clipboard" class="icon-docs" :disabled="filesSelected() <= 0"
-                        @click="copySelection"></button>
-                <button title="download selection" class="icon-download" :disabled="filesSelected() <= 0"
-                        @click="downloadSelection"></button>
+<!--                <button title="mail selected files" class="icon-mail" :disabled="filesSelected() <= 0"-->
+<!--                        @click="mailSelection"></button>-->
+<!--                <button title="copy selected files to clipboard" class="icon-docs" :disabled="filesSelected() <= 0"-->
+<!--                        @click="copySelection"></button>-->
+<!--                <button title="download selection" class="icon-download" :disabled="filesSelected() <= 0"-->
+<!--                        @click="downloadSelection"></button>-->
             </div>
             <table class="table">
                 <thead>
