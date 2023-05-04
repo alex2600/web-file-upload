@@ -3,7 +3,9 @@ import _ from "lodash"
 const baseUrl = 'http://localhost:3002'
 
 export async function getFiles () {
-   const res = await fetch(`${baseUrl}/api/file/list`)
+   const res = await fetch(`${baseUrl}/api/file/list`, {
+      headers: getAuthHeader(),
+   })
    if (res.status === 401) {
       throw {status: 401, message: "auth required"}
    }
@@ -57,15 +59,11 @@ export async function deleteFile (fileId) {
    }
 }
 
-export async function testAuth (user, pass) {
+export async function testAuth (login, password) {
    try {
       const res = await fetch(`${baseUrl}/api/file/list`, {
          method: "GET",
-         headers: {
-            // 'Content-Type': 'application/json'
-            "Authorization": "Basic " + btoa(`${user}:${pass}`),
-         },
-         // body: JSON.stringify({user, pass})
+         headers: getAuthHeader(login, password),
       })
       if (res.status === 401) {
          throw {status: 401, message: "auth required"}
@@ -74,5 +72,16 @@ export async function testAuth (user, pass) {
    } catch (ex) {
       console.error(ex)
       throw ex
+   }
+}
+
+function getAuthHeader (login, password) {
+   const login2 = login ?? sessionStorage.getItem("login")
+   const password2 = password ?? sessionStorage.getItem("password")
+   if (login2 && password2) {
+      return {Authorization: `Basic ${btoa(`${login2}:${password2}`)}`}
+   }
+   else {
+      return {}
    }
 }

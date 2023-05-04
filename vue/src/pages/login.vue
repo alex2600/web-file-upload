@@ -35,7 +35,7 @@ async function tryLogin () {
       const res = await api.testAuth(login.value, password.value)
       // auth ok - remember login and password
       sessionStorage.setItem("login", login.value)
-      sessionStorage.setItem("password", password.value)
+      sessionStorage.setItem("password", password.value) // TODO use JWT - plaintext passwords are not secure
       return router.push("/file-list")
    } catch (ex) {
       console.log("login failed", ex)
