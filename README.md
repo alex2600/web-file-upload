@@ -53,7 +53,25 @@ Or run using PM2 process manager (on server)
     npm run build-ui
 
 This will generate the frontend files in the `vue/dist` directory.
+
 `vue/dist` can be served by your webserver as static files.
+Make sure you apply a proper config for Single Page Applications (SPA) to your webserver.
+
+Apache example:
+```
+<Directory /var/www/web-file-upload> # SPA CONFIG
+   order allow,deny
+   allow from all
+
+   RewriteEngine on
+
+   RewriteCond %{REQUEST_FILENAME} -s [OR]
+   RewriteCond %{REQUEST_FILENAME} -l [OR]
+   RewriteCond %{REQUEST_FILENAME} -d
+   RewriteRule ^.*$ - [NC,L]
+   RewriteRule ^(.*) /index.html [NC,L]
+</Directory>
+```
 
 ## Development
 
