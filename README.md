@@ -2,62 +2,59 @@
 
 ## About
 
-*Web File Upoader* provides:
+- The system provides a REST API that supports file uploading and downloading, as well as other features.
+- A web-based frontend is available to facilitate file uploads and downloads using the REST API.
+- Uploaded files are stored in the system for 48 hours by default, but users can mark files as "pinned" to keep them
+  around longer.
+- The system provides a backend area that's accessible only to authenticated users, where files can be managed (listed,
+  viewed, and deleted) and media files can be previewed without downloading.
+- Email notifications can be configured to send a list of recently uploaded files to a specified address.
 
-- a REST API for uploading and downloading files (and more)
-- a Web-Frontend to up- and download files using a browser
-- upload is by default free for all
-- for downloading a file you only need to know the file URL
-- there is also a Backend area which requires authenication
-  - here all available files can be listed, viewed, deleted
-  - Media files can be previewed without having to download the file
-- by default all uploaded files are deleted after 48 hours
-- files can be pinned - pinned files are not deleted automatically after a period of time
-- a list of recently uploaded files are reported to a specified email adress
+## Settings
 
+Make a copy of `settings.default.json`.
+Rename it to `settings.$NODE_ENV.json` (where `$NODE_ENV` is the environment variable that determines the environment
+the app is running in, e.g. `development`, `production`, etc.).
 
-## Setup
+Change inside your new settings file the following settings:
 
-### File upload destination
+- uploadDir: The directory where the uploaded files will be stored.
+- baseUrl: The base URL the server will be running on.
+- mail: The sender and recipient email addresses for the notification email, as well as the CRON schedule for sending
+  the email.
+- auth: The username and password for the backend area.
 
-Specify your file upload destination in `settings.default.json` (or overwrite the defaults by using a custom settings file `settings.$NODE_ENV.json`).
+## Install dependencies
 
-### Auth
+    npm i
 
-Uploading and Downloading files does not require Authentication, but accessing the advanced features does.
+## Frontend
 
-The username and password can be set in `settings.default.json` or in a dedicated `settings.$NODE_ENV.json` file.
+    npm run build-ui
 
-## Install dependencies 
+This will generate the frontend files in the `vue/dist` directory.
+`vue/dist` can be served by your webserver as static files.
 
-    npm ci
-
-## Build lib 
-
-    npm run build-production
-
-## Run
-
-Simply run the App
+## REST API
 
     npm start
 
-... or run using PM2 process manager (on server)
+Or run using PM2 process manager (on server)
 
     pm2 start --name fileUpload bin/www
 
-... or run using Docker
-
-    npm run docker-rebuild
-
-
 ## Development
+
+Running the Web Frontend in development mode
+
+    npm run dev-ui
 
 Running the REST API
 
     npm run dev
 
-Running the Web Frontend in development mode
+## Security
 
-    npm run watch
+Right now the CORS settings of the REST API are set to allow all origins.
+If this is not desired, change the CORS settings in `app.js` to your needs.
 
