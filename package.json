@@ -56,10 +56,10 @@
       "vue-hot-reload-api": "^2.3.4",
       "vue-router": "^4.1.6",
       "vue-template-compiler": "^2.6.12",
-      "winston": "^3.3.3"
-   },
-   "devDependencies": {
+      "winston": "^3.3.3",
       "@vitejs/plugin-vue": "^4.0.0",
       "vite": "^4.1.4"
+   },
+   "devDependencies": {
    }
 }
