@@ -1,7 +1,7 @@
 {
   "title": "Web File Uploader",
-  "port": 9100,
-  "baseUrl": "https://your-site.com",
+  "port": 3002,
+  "baseUrl": "http://localhost:3002",
   "uploadDir": "/tmp",
   "logFile": "./logs/log.log",
   "db": {

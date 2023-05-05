@@ -1,6 +1,6 @@
 import _ from "lodash"
 
-const baseUrl = 'http://localhost:3002'
+const baseUrl = import.meta.env.VITE_API_BASE
 
 /////// FILES ////////////////////////////////////////////////////////////////
 

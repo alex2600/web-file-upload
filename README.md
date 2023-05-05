@@ -12,6 +12,8 @@
 
 ## Settings
 
+### REST API
+
 Make a copy of `settings.default.json`.
 Rename it to `settings.$NODE_ENV.json` (where `$NODE_ENV` is the environment variable that determines the environment
 the app is running in, e.g. `development`, `production`, etc.).
@@ -24,24 +26,34 @@ Change inside your new settings file the following settings:
   the email.
 - auth: The username and password for the backend area.
 
+### Frontend
+
+The frontend needs to know the base URL of the REST API.
+This is configured in `vue/.env`.
+
+
 ## Install dependencies
 
     npm i
 
-## Frontend
 
-    npm run build-ui
+## Running
 
-This will generate the frontend files in the `vue/dist` directory.
-`vue/dist` can be served by your webserver as static files.
-
-## REST API
+### REST API
 
     npm start
 
 Or run using PM2 process manager (on server)
 
     pm2 start --name fileUpload bin/www
+
+
+### Frontend
+
+    npm run build-ui
+
+This will generate the frontend files in the `vue/dist` directory.
+`vue/dist` can be served by your webserver as static files.
 
 ## Development
 
