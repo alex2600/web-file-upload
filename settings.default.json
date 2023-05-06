@@ -1,22 +1,31 @@
 {
-  "title": "Web File Uploader",
-  "port": 3002,
-  "baseUrl": "http://localhost:3002",
-  "uploadDir": "/tmp",
-  "logFile": "./logs/log.log",
-  "db": {
-    "url": "mongodb://127.0.0.1/fileUpload",
-    "dbCleanupInterval": "0 */30 * * * *",
-    "fileMaxAge": "PT48H"
-  },
-  "mail": {
-    "mailSendInterval": "0 */30 * * * *",
-    "from": "your.mail@example.com",
-    "to": "your.mail@example.com",
-    "subject": "New Upload @ {{site}}"
-  },
-  "auth": {
-    "user": "user",
-    "pass": "password342565523"
-  }
+   "title": "Web File Uploader",
+   "port": 3002,
+   "baseUrl": "http://localhost:3002",
+   "uploadDir": "/tmp",
+   "logFile": "./logs/log.log",
+   "db": {
+      "url": "mongodb://127.0.0.1/fileUpload",
+      "dbCleanupInterval": "0 */30 * * * *",
+      "fileMaxAge": "PT48H"
+   },
+   "mail": {
+      "mailSendInterval": "0 */30 * * * *",
+      "from": "your.mail@example.com",
+      "to": "your.mail@example.com",
+      "subject": "New Upload @ {{site}}",
+      "smtp": {
+         "host": "smtp.example.com",
+         "port": 587,
+         "secure": false,
+         "auth": {
+            "user": "username",
+            "pass": "password"
+         }
+      }
+   },
+   "auth": {
+      "user": "user",
+      "pass": "password342565523"
+   }
 }
