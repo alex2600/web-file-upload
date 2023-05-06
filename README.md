@@ -59,7 +59,7 @@ Make sure you apply a proper config for Single Page Applications (SPA) to your w
 
 Apache example:
 ```
-<Directory /var/www/web-file-upload> # SPA CONFIG
+<Directory /var/www/web-file-upload> # web-file-upload is a symlink to .../vue/dist
    order allow,deny
    allow from all
 
