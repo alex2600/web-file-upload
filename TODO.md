@@ -1,5 +1,6 @@
 # TODO 
 
+- cancel running uploads
 - upload target for Text snippets (see https://pastebin.com/)
   - add page to display uploaded snippets
   - editor for uploaded snippets 
