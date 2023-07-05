@@ -26,7 +26,7 @@ module.exports = router
 /////// FNs ////////////////////////////////////////////////////////////////
 
 // filePath ist nur noch der Name der Datei! Pfad muss aus Einstellungen gelesen werden.
-function getFileData (_id, fileName, fileSize, filePath, ip, persist) {
+function getFileData (_id, fileName, fileSize, filePath, ip, persist, folder) {
    return {
       _id,
       site: settings.baseUrl,
@@ -39,6 +39,7 @@ function getFileData (_id, fileName, fileSize, filePath, ip, persist) {
       fileSize: fileSize,
       uploaderIp: ip,
       persist: !!persist,
+      folder,
    }
 }
 
@@ -75,6 +76,7 @@ async function postFile (req, res, next) {
 
       const file = req.body.file
       const persist = req.query.persist
+      const folder = req.query.folder || ""
 
       if (!file) {
          return res.status(500).json({
@@ -85,7 +87,6 @@ async function postFile (req, res, next) {
 
       let _id = mongoose.Types.ObjectId().toString()
       const src = file.filepath
-      // const {size} = fs.statSync(src)
       const trg = path.join(settings.uploadDir, _id)
       const filePath = _id // pfad wird weggelassen und beim download aus den settings zusammengesetzt
       console.log("moving %s to %s", src, trg)
@@ -94,7 +95,7 @@ async function postFile (req, res, next) {
 
       // create file data
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-      const fileData = getFileData(_id, file.originalFilename, file.size, filePath, ip, persist)
+      const fileData = getFileData(_id, file.originalFilename, file.size, filePath, ip, persist, folder)
 
       // save to db
       const dbObj = await new db.File(fileData).save()

@@ -9,39 +9,40 @@ const settings = require("../../settings")
 /////////////////////////////////////////////////////////////////////////
 
 mongoose
-    .connect(settings.db.url, {useNewUrlParser: true, useUnifiedTopology: true})
-    .catch(function (err) {
-        console.error(err)
+   .connect(settings.db.url, {useNewUrlParser: true, useUnifiedTopology: true})
+   .catch(function (err) {
+      console.error(err)
 
-    })
+   })
 
 const File = mongoose.model('File', {
-    site: String,
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-    uploaderIp: String,
-    url: String,
-    originalName: String,
-    filePath: String,
-    fileSize: Number,
-    mime: String,
-    persist: Boolean,
+   site: String,
+   date: {
+      type: Date,
+      default: Date.now,
+   },
+   uploaderIp: String,
+   url: String,
+   originalName: String,
+   filePath: String,
+   fileSize: Number,
+   mime: String,
+   persist: Boolean,
+   folder: String,
 
-    mailSent: {
-        type: Date,
-        default: null,
-    },
-    created: {
-        type: Date,
-        default: Date.now,
-    },
+   mailSent: {
+      type: Date,
+      default: null,
+   },
+   created: {
+      type: Date,
+      default: Date.now,
+   },
 
-});
+})
 
 module.exports = {
-    File,
+   File,
 }
 
 /////////////////////////////////////////////////////////////////////////
