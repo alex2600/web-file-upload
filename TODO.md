@@ -1,5 +1,8 @@
 # TODO 
 
+- upload to folder
+  - list single folders only
+  - display folders in default view
 - cancel running uploads
 - upload target for Text snippets (see https://pastebin.com/)
   - add page to display uploaded snippets
