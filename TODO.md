@@ -3,6 +3,11 @@
 - upload to folder
   - list single folders only
   - display folders in default view
+- upload progress bar
+  - show already uploaded bytes
+  - show total bytes
+  - show percentage
+  - show estimated time
 - cancel running uploads
 - upload target for Text snippets (see https://pastebin.com/)
   - add page to display uploaded snippets
