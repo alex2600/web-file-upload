@@ -13,7 +13,7 @@
 import {onMounted, ref} from "vue"
 import moment from 'moment' // TODO drop moment use dayjs
 import tools from '../lib/tools'
-import LazyMediaItem from '../components/lazyMediaItem.vue'
+import LazyMediaItem from './lazyMediaItem.vue'
 import * as api from '../lib/api'
 import {useRoute} from "vue-router"
 

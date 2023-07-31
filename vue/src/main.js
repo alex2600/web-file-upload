@@ -8,7 +8,7 @@ import App from './pages/app.vue'
 import Upload from "./pages/upload.vue"
 import FileList from "./pages/fileList.vue"
 import Media from "./pages/media.vue"
-import MediaItem from "./pages/mediaItem.vue"
+import MediaItem from "./components/MediaItem.vue"
 import Stats from "./pages/stats.vue"
 import Login from "./pages/login.vue"
 
