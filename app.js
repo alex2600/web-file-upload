@@ -35,7 +35,8 @@ app.use('/api/upload', require("./routes/upload"))
 app.use('/api/file', require("./routes/file"))
 app.use('/api/version', require("./routes/version"))
 app.use('*', function (req, res, next) {
-   res.status(500).json({status: "error", message: "Invalid route"})
+   // res.status(500).json({status: "error", message: "Invalid route"}) // wrong! single page app must send index.html
+   res.sendFile(path.join(__dirname, 'vue/dist/index.html'))
 })
 
 // catch 404 and forward to error handler
