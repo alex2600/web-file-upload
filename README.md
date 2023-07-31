@@ -1,4 +1,4 @@
-# Web File Uploader
+# Web File Upload
 
 ## About
 
