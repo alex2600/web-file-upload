@@ -31,6 +31,7 @@ Change inside your new settings file the following settings:
 The frontend needs to know the base URL of the REST API.
 This is configured in `vue/.env`.
 
+Remember to rebuild the frontend after changing the settings.
 
 ## Install dependencies
 
