@@ -24,11 +24,10 @@ app.set('json spaces', 3)
 app.use(logger('dev'))
 app.use(cors())
 app.use(bodyParser.json())
-// app.use(bodyParser.json({limit: "12GB"})); // not working - still "request entity too large"
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
 app.use(require('stylus').middleware(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'vue/dist')))
 
 /////// ROUTES ////////////////////////////////////////////////////////////////
 
