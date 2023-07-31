@@ -2,7 +2,7 @@
 
     <div class="container">
         <h1>Login</h1>
-        <form @submit.stop="tryLogin" id="login">
+        <form @submit.prevent="tryLogin" id="login">
             <span>Login</span>
             <input type="text" v-model="login" :disabled="disabled">
             <span>Password</span>
