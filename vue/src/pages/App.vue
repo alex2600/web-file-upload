@@ -1,15 +1,3 @@
-<template>
-    <div id="upload-main">
-        <div>
-            <my-nav></my-nav>
-            <errors :do-cleanup="false"></errors>
-            <router-view></router-view>
-            <footer></footer>
-            <div id="version">v{{ version }}</div>
-        </div>
-    </div>
-</template>
-
 <script setup>
 import myNav from '../components/myNav.vue'
 import notifications from '../lib/notifications'
@@ -36,6 +24,20 @@ async function loadVersion () {
 }
 
 </script>
+
+
+<template>
+   <div id="upload-main">
+      <div>
+         <my-nav></my-nav>
+         <errors :do-cleanup="false"></errors>
+         <router-view></router-view>
+         <footer></footer>
+         <div id="version">v{{ version }}</div>
+      </div>
+   </div>
+</template>
+
 
 <style scoped>
 

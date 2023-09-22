@@ -1,19 +1,3 @@
-<template>
-
-    <div class="container">
-        <h1>Login</h1>
-        <form @submit.prevent="tryLogin" id="login">
-            <span>Login</span>
-            <input type="text" v-model="login" :disabled="disabled">
-            <span>Password</span>
-            <input type="password" v-model="password" :disabled="disabled">
-            <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
-            <button type="submit" class="button">Login</button>
-        </form>
-    </div>
-
-</template>
-
 <script setup>
 
 import {ref} from "vue"
@@ -50,6 +34,23 @@ async function tryLogin () {
 }
 
 </script>
+
+
+<template>
+
+   <div class="container">
+      <h1>Login</h1>
+      <form @submit.prevent="tryLogin" id="login">
+         <span>Login</span>
+         <input type="text" v-model="login" :disabled="disabled">
+         <span>Password</span>
+         <input type="password" v-model="password" :disabled="disabled">
+         <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
+         <button type="submit" class="button">Login</button>
+      </form>
+   </div>
+
+</template>
 
 
 <style scoped lang="stylus">
