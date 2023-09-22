@@ -1,25 +1,3 @@
-<template>
-    <div class="lazy-media-item" ref="root">
-        <div v-if="!isVisible" class="placeholder">
-            MEDIA NOT VISIBLE ({{ isVisible }})
-            <br>
-            {{ file.originalName }}
-        </div>
-        <figure v-if="isVisible" class="media-item" :class="{'media-item-lg':isLarge}">
-            <figcaption>
-                {{ file.date2 }}
-                <br>
-                <a :href="file.url" class="ff-mono a-white icon-download">{{ file.originalName }}</a>
-                &nbsp;
-                <router-link class="btn icon-link preview-link"
-                             title="preview" :to="'/media/'+file._id"></router-link>
-            </figcaption>
-            <video v-if="file.type==='video'" :src="file.url" controls></video>
-            <img v-if="file.type==='image'" :src="file.url">
-        </figure>
-    </div>
-</template>
-
 <script setup>
 import {onMounted, ref} from "vue"
 import {useRouter, RouterLink} from "vue-router"
@@ -61,6 +39,29 @@ function makeVisible (arg) {
 }
 
 </script>
+
+
+<template>
+   <div class="lazy-media-item" ref="root">
+      <div v-if="!isVisible" class="placeholder">
+         MEDIA NOT VISIBLE ({{ isVisible }})
+         <br>
+         {{ file.originalName }}
+      </div>
+      <figure v-if="isVisible" class="media-item" :class="{'media-item-lg':isLarge}">
+         <figcaption>
+            {{ file.date2 }}
+            <br>
+            <a :href="file.url" class="ff-mono a-white icon-download">{{ file.originalName }}</a>
+            &nbsp;
+            <router-link class="btn icon-link preview-link"
+                         title="preview" :to="'/media/'+file._id"></router-link>
+         </figcaption>
+         <video v-if="file.type==='video'" :src="file.url" controls></video>
+         <img v-if="file.type==='image'" :src="file.url">
+      </figure>
+   </div>
+</template>
 
 
 <style scoped lang="stylus">

@@ -1,14 +1,3 @@
-<template>
-    <div id="loginLogoutArea">
-        <div v-if="auth.login">
-            <button @click="doLogout">Logout</button>
-        </div>
-        <div v-else>
-            <button @click="doLogin">Login</button>
-        </div>
-    </div>
-</template>
-
 <script setup>
 import {computed, onMounted, ref} from "vue"
 import {useRouter} from "vue-router"
@@ -34,10 +23,22 @@ function doLogout () {
 }
 
 function doLogin () {
-    router.push("/login")
+   router.push("/login")
 }
 
 </script>
+
+
+<template>
+   <div id="loginLogoutArea">
+      <div v-if="auth.login">
+         <button @click="doLogout">Logout</button>
+      </div>
+      <div v-else>
+         <button @click="doLogin">Login</button>
+      </div>
+   </div>
+</template>
 
 
 <style scoped>

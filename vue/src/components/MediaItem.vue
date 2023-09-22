@@ -1,13 +1,3 @@
-<template>
-    <div id="" class="container" style="margin-top: 0 !important;">
-
-        <div class="flex-row media-items">
-            <lazy-media-item v-if="file" :file="file" is-large></lazy-media-item>
-        </div>
-
-    </div>
-</template>
-
 <script setup>
 
 import {onMounted, ref} from "vue"
@@ -37,6 +27,18 @@ async function init () {
    file.value = file2
 }
 </script>
+
+
+<template>
+   <div id="" class="container" style="margin-top: 0 !important;">
+
+      <div class="flex-row media-items">
+         <lazy-media-item v-if="file" :file="file" is-large></lazy-media-item>
+      </div>
+
+   </div>
+</template>
+
 
 <style scoped lang="stylus">
 
