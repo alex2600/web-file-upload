@@ -1,5 +1,6 @@
 # TODO 
 
+- create image preview thumbnails using https://github.com/lovell/sharp
 - upload to folder
   - list single folders only
   - display folders in default view
