@@ -4,13 +4,13 @@ import {createApp} from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
 import {createPinia} from "pinia"
 
-import App from './pages/app.vue'
-import Upload from "./pages/upload.vue"
-import FileList from "./pages/fileList.vue"
-import Media from "./pages/media.vue"
+import App from './pages/App.vue'
+import Upload from "./pages/Upload.vue"
+import FileList from "./pages/FileList.vue"
+import Media from "./pages/Media.vue"
 import MediaItem from "./components/MediaItem.vue"
-import Stats from "./pages/stats.vue"
-import Login from "./pages/login.vue"
+import Stats from "./pages/Stats.vue"
+import Login from "./pages/Login.vue"
 
 /////////////////////////////////////////////////////////////////////////
 
