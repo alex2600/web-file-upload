@@ -4,6 +4,7 @@ import UploadDrop from '../components/uploadDrop.vue'
 import RecentUploads from '../components/recentUploads.vue'
 import * as api from '../lib/api'
 import {onMounted, reactive} from "vue"
+import Spinner from "@/vue/src/components/spinner.vue"
 
 
 const data = reactive({
