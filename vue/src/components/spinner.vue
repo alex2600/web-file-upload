@@ -5,9 +5,9 @@ import {computed} from "vue"
 const props = defineProps(
     {
        width: {
-          type: Number,
+          type: String,
           required: false,
-          default: 50
+          default: "32"
        }
     },
 )
