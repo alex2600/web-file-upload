@@ -1,50 +1,7 @@
-<template>
-
-    <div class="container">
-        <h1>
-            <span class="ff-mono">WEB-File</span> &#x21CC; <span class="ff-mono">upload</span>
-        </h1>
-        <div class="subheader ff-default">
-            Files are deleted automatically after 48 hours.
-        </div>
-        <div class="options">
-            <input type="checkbox" v-model="data.persist" id="input-persist">
-            <label for="input-persist">do not delete automatically</label>
-        </div>
-
-        <div id="upload-container">
-
-            <upload-drop v-on:drop="dropFile"></upload-drop>
-            <div style="margin-top: -.5em;">
-                <input type="file" class="" @change="dropFile" multiple>
-            </div>
-
-            <div id="upload-q" class="field">
-                <fieldset>
-                    <legend>Upload-Queue</legend>
-                    <uploads :files="data.uploadQ"></uploads>
-                </fieldset>
-            </div>
-
-            <div v-if="data.error" class="error-message">{{ data.error.toString() }}</div>
-
-            <div id="recent-uploads" class="field">
-                <fieldset>
-                    <legend>Recent Uploads</legend>
-                    <recent-uploads :uploaded="data.uploaded"></recent-uploads>
-                </fieldset>
-            </div>
-        </div>
-
-
-    </div>
-</template>
-
 <script setup>
 import Uploads from '../components/uploads.vue'
 import UploadDrop from '../components/uploadDrop.vue'
 import RecentUploads from '../components/recentUploads.vue'
-import Spinner from "../components/spinner.vue"
 import * as api from '../lib/api'
 import {onMounted, reactive} from "vue"
 
@@ -87,7 +44,7 @@ function dropFile (newFilesOrEvent) {
       }
    })
    data.uploadQ = [...data.uploadQ, ...Array.from(files)]
-   console.log("uploadQ",data.uploadQ,Array.from(files))
+   console.log("uploadQ", data.uploadQ, Array.from(files))
 }
 
 async function doUpload () {
@@ -113,6 +70,50 @@ async function doUpload () {
 }
 
 </script>
+
+
+<template>
+
+   <div class="container">
+      <h1>
+         <span class="ff-mono">WEB-File</span> &#x21CC; <span class="ff-mono">upload</span>
+      </h1>
+      <div class="subheader ff-default">
+         Files are deleted automatically after 48 hours.
+      </div>
+      <div class="options">
+         <input type="checkbox" v-model="data.persist" id="input-persist">
+         <label for="input-persist">do not delete automatically</label>
+      </div>
+
+      <div id="upload-container">
+
+         <upload-drop v-on:drop="dropFile"></upload-drop>
+         <div style="margin-top: -.5em;">
+            <input type="file" class="" @change="dropFile" multiple>
+         </div>
+
+         <div id="upload-q" class="field">
+            <fieldset>
+               <legend>Upload-Queue</legend>
+               <uploads :files="data.uploadQ"></uploads>
+            </fieldset>
+         </div>
+
+         <div v-if="data.error" class="error-message">{{ data.error.toString() }}</div>
+
+         <div id="recent-uploads" class="field">
+            <fieldset>
+               <legend>Recent Uploads</legend>
+               <recent-uploads :uploaded="data.uploaded"></recent-uploads>
+            </fieldset>
+         </div>
+      </div>
+
+
+   </div>
+</template>
+
 
 <style scoped lang="stylus">
 
