@@ -23,6 +23,11 @@
                 _.pull(this.files, file)
                 this.$forceUpdate()
             }
+        },
+       watch: {
+            files: function (val) {
+                console.log("__FILES", val)
+            }
         }
     }
 </script>

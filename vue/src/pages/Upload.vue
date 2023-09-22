@@ -70,6 +70,8 @@ function dropFile (newFilesOrEvent) {
    console.log("DROP", newFilesOrEvent)
    let files
    if (newFilesOrEvent instanceof Event) {
+      console.log("got event -> get out")
+      return
       files = newFilesOrEvent.target.files
       newFilesOrEvent.target.files = null
    }
@@ -77,13 +79,15 @@ function dropFile (newFilesOrEvent) {
       files = newFilesOrEvent
    }
    files = Array.from(files)
+   console.log("files", files)
    files = files.map(function (file) { // wrap files in object
       return {
          file: file,
          isUploading: false,
       }
    })
-   data.uploadQ = [...data.uploadQ, ...files]
+   data.uploadQ = [...data.uploadQ, ...Array.from(files)]
+   console.log("uploadQ",data.uploadQ,Array.from(files))
 }
 
 async function doUpload () {
