@@ -1,48 +1,45 @@
 <template>
-    <div id="upload-drop-target"
-         @drop="handleDrop"
-         @dragenter="handleDragEnter"
-         @dragleave="handleDragLeave"
-         @dragover="handleDragOver"
-         :class="dropTargetClass"
-    >
-        <div id="upload-drop-icon" class="icon-upload-cloud"></div>
-        <div id="upload-drop-text">drop files here</div>
-    </div>
+   <div id="upload-drop-target"
+        @drop="handleDrop"
+        @dragenter="handleDragEnter"
+        @dragleave="handleDragLeave"
+        @dragover="handleDragOver"
+        :class="dropTargetClass"
+   >
+      <div id="upload-drop-icon" class="icon-upload-cloud"></div>
+      <div id="upload-drop-text">drop files here</div>
+   </div>
 </template>
 
-<script>
-    export default {
-        name: "uploadDrop",
-        created() {
+<script setup>
 
-        },
-        data() {
-            return {
-                dropTargetClass: "",
-            }
-        },
-        methods: {
-            handleDrop: function (evt) {
-                evt.stopPropagation()
-                evt.preventDefault()
-                this.$emit("drop", evt.dataTransfer.files)
-            },
-            handleDragEnter: function (evt) {
-                evt.stopPropagation()
-                evt.preventDefault()
-                this.dropTargetClass = "drag-over"
-            },
-            handleDragLeave: function (evt) {
-                evt.stopPropagation()
-                evt.preventDefault()
-                this.dropTargetClass = ""
-            },
-            handleDragOver: function (evt) {
-                evt.stopPropagation()
-                evt.preventDefault()
-            },
-        }
-    }
+import {onMounted, ref} from "vue"
+
+let dropTargetClass = ref("")
+const emit = defineEmits(["drop"])
+
+function handleDrop (evt) {
+   evt.stopPropagation()
+   evt.preventDefault()
+   emit("drop", evt.dataTransfer.files)
+}
+
+function handleDragEnter (evt) {
+   evt.stopPropagation()
+   evt.preventDefault()
+   dropTargetClass = "drag-over"
+}
+
+function handleDragLeave (evt) {
+   evt.stopPropagation()
+   evt.preventDefault()
+   dropTargetClass = ""
+}
+
+function handleDragOver (evt) {
+   evt.stopPropagation()
+   evt.preventDefault()
+}
+
 </script>
 
