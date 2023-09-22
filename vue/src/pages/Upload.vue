@@ -54,19 +54,19 @@ async function doUpload () {
       let file
       try {
          file = vm.uploadQ[0]
+         console.log("##1", file)
          if (!file.isUploading) {
             file.isUploading = true
             const upItem = await api.uploadFile(file.file, vm.persist)
             console.log("upload ok", upItem)
             vm.uploaded.push(upItem)
+            file.isUploading = false
+            vm.uploadQ.shift()
          }
       } catch (ex) {
          console.error(ex)
          vm.error = ex
-      } finally {
-         file.isUploading = false
-         vm.uploadQ.shift()
-      }
+      } finally {}
    }
 }
 
