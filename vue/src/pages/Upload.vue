@@ -13,6 +13,7 @@ const data = reactive({
    error: null,
    isUploading: false,
    persist: false,
+   selectedFiles: [],
 })
 
 onMounted(init)
@@ -29,7 +30,6 @@ function dropFile (newFilesOrEvent) {
    let files
    if (newFilesOrEvent instanceof Event) {
       console.log("got event -> get out")
-      return
       files = newFilesOrEvent.target.files
       newFilesOrEvent.target.files = null
    }
@@ -89,9 +89,9 @@ async function doUpload () {
 
       <div id="upload-container">
 
-         <upload-drop v-on:drop="dropFile"></upload-drop>
+         <upload-drop @drop="dropFile"></upload-drop>
          <div style="margin-top: -.5em;">
-            <input type="file" class="" @change="dropFile" multiple>
+            <input type="file" class="" @change="dropFile" multiple />
          </div>
 
          <div id="upload-q" class="field">
