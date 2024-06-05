@@ -61,11 +61,17 @@ This will generate the frontend files in the `vue/dist` directory.
 
 Running the Web Frontend in development mode
 
-    npm run dev-ui
+    npm run dev:ui
 
 Running the REST API
 
+    npm run dev:api
+
+Or run both at the same time
+
     npm run dev
+
+
 
 ## Security
 
